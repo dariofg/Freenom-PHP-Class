@@ -141,11 +141,13 @@ abstract class FreenomMain
 
             $method = strtolower($method);
 
-            $data['method'] = strtoupper($method);
+//            $data['method'] = strtoupper($method);
 
             switch ($method) {
                 case 'put':
                     curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
+                    curl_setopt($curl, CURLOPT_PUT, true);
+                    curl_setopt($curl, CURLOPT_HTTPHEADER, ['X-HTTP-Method-Override: PUT']);
                     curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
                     break;
 
@@ -163,6 +165,7 @@ abstract class FreenomMain
 
                 default:
                     curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
+                    $url .= '?' . http_build_query($data);
             }
 
             $curl = $this->buildCurlOptions($curl, $url, $data);
@@ -197,7 +200,7 @@ abstract class FreenomMain
         curl_setopt($curl, CURLOPT_TIMEOUT, $this->timeout);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+//        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36');
 
         return $curl;
