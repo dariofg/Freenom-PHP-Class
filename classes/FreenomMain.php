@@ -119,7 +119,7 @@ abstract class FreenomMain
      */
     private function ask(string $url, array $data = [], string $method = 'get')
     {
-        $response = $this->fetch($this->api . $url, $data, $method);
+        $response = $this->fetch($this->api . $url, $data, $method);var_dump($response);
         $response = @json_decode($response, true);
 
         return $response;
@@ -141,15 +141,17 @@ abstract class FreenomMain
 
             $method = strtolower($method);
 
-//            $data['method'] = strtoupper($method);
+            $data['method'] = $method;
+
+			if (empty($data['test_mode']))
+				unset($data['test_mode']);
 
             switch ($method) {
                 case 'put':
                     curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
-                    curl_setopt($curl, CURLOPT_PUT, true);
-                    curl_setopt($curl, CURLOPT_HTTPHEADER, ['X-HTTP-Method-Override: PUT']);
                     curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
-                    break;
+					curl_setopt($curl, CURLINFO_HEADER_OUT, true);
+					break;
 
                 case 'delete':
                     curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
