@@ -19,7 +19,7 @@ class FreenomV2 extends FreenomMain
      *
      * @return void
      */
-    public function __construct(string $email, string $password, int $testMode = 0)
+    public function __construct(string $email, string $password, int $test_mode = 0)
     {
         parent::__construct('https://api.freenom.com/v2/', $email, $password);
 
@@ -39,7 +39,7 @@ class FreenomV2 extends FreenomMain
                     'domaintype' => 'FREE', // FREE or PAID
                     'email' => '',
                     'password' => '',
-                    'testMode' => $testMode,
+                    'test_mode' => $test_mode,
                 ],
                 'required' => [
                     'domainname',
@@ -69,7 +69,7 @@ class FreenomV2 extends FreenomMain
 
                     'email' => '',
                     'password' => '',
-                    'testMode' => $testMode,
+                    'test_mode' => $test_mode,
                 ],
                 'required' => [
                     'domainname',
@@ -89,7 +89,7 @@ class FreenomV2 extends FreenomMain
 
                     'email' => '',
                     'password' => '',
-                    'testMode' => $testMode
+                    'test_mode' => $test_mode
                 ],
                 'required' => [
                     'domainname',
@@ -105,7 +105,7 @@ class FreenomV2 extends FreenomMain
                     'domainname' => '',
                     'email' => '',
                     'password' => '',
-                    'testMode' => $testMode,
+                    'test_mode' => $test_mode,
                 ],
                 'required' => [
                     'domainname',
@@ -133,7 +133,7 @@ class FreenomV2 extends FreenomMain
                     'idshield' => 'enabled', // Identity protection parameter, possible values : enabled or disabled    No  No
                     'autorenew' => 'enabled', //    Autorenewal setting for this domain. Possible values: enabled or disabled.  No  No
 
-                    'testMode' => $testMode,
+                    'test_mode' => $test_mode,
                 ],
                 'required' => [
                     'domainname',
@@ -149,7 +149,7 @@ class FreenomV2 extends FreenomMain
                     'domainname' => '',
                     'email' => '',
                     'password' => '',
-                    'testMode' => $testMode,
+                    'test_mode' => $test_mode,
                 ],
                 'required' => [
                     'domainname',
@@ -165,7 +165,7 @@ class FreenomV2 extends FreenomMain
                     'domainname' => '',
                     'email' => '',
                     'password' => '',
-                    'testMode' => $testMode,
+                    'test_mode' => $test_mode,
                 ],
                 'required' => [
                     'domainname',
@@ -187,7 +187,7 @@ class FreenomV2 extends FreenomMain
                     'tech_id' => '', // Contact ID of technical contact No  No
                     'idshield' => 'enabled', // Identity protection parameter, possible values : enabled or disabled    No**    No
                     'period' => '', //  Number of years to add to domain expiration, after the domain has been upgraded.    Yes Yes
-                    'testMode' => $testMode,
+                    'test_mode' => $test_mode,
                 ],
                 'required' => [
                     'domainname',
@@ -205,7 +205,7 @@ class FreenomV2 extends FreenomMain
                     'results_per_page' => '', //        Number of results per page. Defaults to 25  No  No
                     'email' => '', //       E-mail address used for authentication  No  No
                     'password' => '', //        Password used for authentication    No  No
-                    'testMode' => $testMode,
+                    'test_mode' => $test_mode,
                 ],
                 'required' => [
                     'email',
@@ -222,7 +222,7 @@ class FreenomV2 extends FreenomMain
                     'ipaddress' => '',
                     'email' => '',
                     'password' => '',
-                    'testMode' => $testMode,
+                    'test_mode' => $test_mode,
                 ],
                 'required' => [
                     'domainname',
@@ -241,7 +241,7 @@ class FreenomV2 extends FreenomMain
                     'hostname' => '',
                     'email' => '',
                     'password' => '',
-                    'testMode' => $testMode,
+                    'test_mode' => $test_mode,
                 ],
                 'required' => [
                     'domainname',
@@ -259,7 +259,7 @@ class FreenomV2 extends FreenomMain
 
                     'email' => '',
                     'password' => '',
-                    'testMode' => $testMode,
+                    'test_mode' => $test_mode,
                 ],
                 'required' => [
                     'domainname',
@@ -273,7 +273,7 @@ class FreenomV2 extends FreenomMain
                 'method' => 'put',
                 'params' => [
                     'contact_organization' => '', //    Organization name of contact    No  No
-                    'contact_title' => '', //   Title of the contact    No  No
+//                    'contact_title' => '', //   Title of the contact    No  No
                     'contact_firstname' => '', //   First name of contact   Yes No
                     'contact_middlename' => '', //  Middle name of contact  No  No
                     'contact_lastname' => '', //    Last name of contact    Yes No
@@ -288,7 +288,7 @@ class FreenomV2 extends FreenomMain
                     'contact_id' => '', //  ID of existing contact  No  No
                     'email' => '', //   E-mail address used for authentication  Yes No
                     'password' => '', //    Password used for authentication    Yes No
-                    'testMode' => $testMode,
+                    'test_mode' => $test_mode,
                 ],
                 'required' => [
                     'contact_firstname',
@@ -311,7 +311,7 @@ class FreenomV2 extends FreenomMain
                     'contact_id' => '',
                     'email' => '',
                     'password' => '',
-                    'testMode' => $testMode,
+                    'test_mode' => $test_mode,
                 ],
                 'required' => [
                     'contact_id',
@@ -327,7 +327,7 @@ class FreenomV2 extends FreenomMain
                     'contact_id' => '',
                     'email' => '',
                     'password' => '',
-                    'testMode' => $testMode,
+                    'test_mode' => $test_mode,
                 ],
                 'required' => [
                     'contact_id',
@@ -342,7 +342,7 @@ class FreenomV2 extends FreenomMain
                 'params' => [
                     'email' => '',
                     'password' => '',
-                    'testMode' => $testMode,
+                    'test_mode' => $test_mode,
                 ],
                 'required' => [
                     'email',
@@ -358,7 +358,7 @@ class FreenomV2 extends FreenomMain
                     'authcode' => '',
                     'email' => '',
                     'password' => '',
-                    'testMode' => $testMode,
+                    'test_mode' => $test_mode,
                 ],
                 'required' => [
                     'domainname',
@@ -378,7 +378,7 @@ class FreenomV2 extends FreenomMain
                     'owner_id' => '',
                     'email' => '',
                     'password' => '',
-                    'testMode' => $testMode,
+                    'test_mode' => $test_mode,
                 ],
                 'required' => [
                     'domainname',
@@ -397,7 +397,7 @@ class FreenomV2 extends FreenomMain
                     'domainname' => '',
                     'email' => '',
                     'password' => '',
-                    'testMode' => $testMode,
+                    'test_mode' => $test_mode,
                 ],
                 'required' => [
                     'domainname',
@@ -414,7 +414,7 @@ class FreenomV2 extends FreenomMain
                     'reason' => '',
                     'email' => '',
                     'password' => '',
-                    'testMode' => $testMode,
+                    'test_mode' => $test_mode,
                 ],
                 'required' => [
                     'domainname',
@@ -430,7 +430,7 @@ class FreenomV2 extends FreenomMain
                 'params' => [
                     'email' => '',
                     'password' => '',
-                    'testMode' => $testMode,
+                    'test_mode' => $test_mode,
                 ],
                 'required' => [
                     'email',
