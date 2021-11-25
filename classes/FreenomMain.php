@@ -119,7 +119,7 @@ abstract class FreenomMain
      */
     private function ask(string $url, array $data = [], string $method = 'get')
     {
-        $response = $this->fetch($this->api . $url, $data, $method);var_dump($response);
+        $response = $this->fetch($this->api . $url, $data, $method);
         $response = @json_decode($response, true);
 
         return $response;
@@ -143,31 +143,34 @@ abstract class FreenomMain
 
             $data['method'] = $method;
 
-			if (empty($data['test_mode']))
-				unset($data['test_mode']);
+            if (empty($data['test_mode']))
+                unset($data['test_mode']);
+
+            $postfields = http_build_query($data);
+            $postfields = preg_replace('/nameserver%5B\d%5D=/', 'nameserver=', $postfields);
 
             switch ($method) {
                 case 'put':
                     curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
-                    curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
-					curl_setopt($curl, CURLINFO_HEADER_OUT, true);
-					break;
+                    curl_setopt($curl, CURLOPT_POSTFIELDS, $postfields);
+                    curl_setopt($curl, CURLINFO_HEADER_OUT, true);
+                    break;
 
                 case 'delete':
                     curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
-                    curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
+                    curl_setopt($curl, CURLOPT_POSTFIELDS, $postfields);
                     break;
 
                 case 'post':
                     curl_setopt($curl, CURLOPT_POST, true);
                     curl_setopt($curl, CURLOPT_FORBID_REUSE, true);
                     curl_setopt($curl, CURLOPT_FRESH_CONNECT, true);
-                    curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
+                    curl_setopt($curl, CURLOPT_POSTFIELDS, $postfields);
                     break;
 
                 default:
                     curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "GET");
-                    $url .= '?' . http_build_query($data);
+                    $url .= "?$postfields";
             }
 
             $curl = $this->buildCurlOptions($curl, $url, $data);
