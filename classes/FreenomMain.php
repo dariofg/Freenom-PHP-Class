@@ -146,6 +146,9 @@ abstract class FreenomMain
             if (empty($data['test_mode']))
                 unset($data['test_mode']);
 
+            if (empty($data['forward_url']))
+                unset($data['forward_url'], $data['forward_mode']);
+
             $postfields = http_build_query($data);
             $postfields = preg_replace('/nameserver%5B\d%5D=/', 'nameserver=', $postfields);
 
